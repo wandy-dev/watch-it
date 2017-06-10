@@ -18,66 +18,16 @@
   </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">Watchttit</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Home</a>
-            <a class="mdl-navigation__link" href="">About</a>
-          </nav>
-        </div>
-      </header>
-      <main class="mdl-layout__content">
-      <div class="page-content">
-        <br>
-        <div class="content-grid mdl-grid">
-          <div class="mdl-cell mdl-cell--8-col">
-            <div class='video-container'>
-              <div id='ytplayer'></div>
-            </div>
-            <br>
-          </div>
-          <div class="mdl-cell mdl-cell--4-col">
-            <div id='reddit-content'></div>
-            <div class='mdl-grid' id='autoplay-wrapper'>
-              <div class='mdl-cell--7-col'>
-              </div>
-              <div class='mdl-cell--5-col'>
-                <div class='mdl-grid'>
-                  <div class='mdl-cell--11-col'>
-                    <span>AUTOPLAY</span>
-                  </div>
-                  <div class='mdl-cell--1-col'>
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" style='float: right;' for="switch-1">
-                      <input type="checkbox" data-bind="checked: booleanValue" id="switch-1" class="mdl-switch__input" checked>
-                      <span class="mdl-switch__label"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div data-bind="foreach: videos, visible: videos().length > 0">
-              <a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index())}">
-                <div class='mdl-grid'>
-                  <div class='mdl-cell--5-col'>
-                    <img data-bind='attr:{src: thumbnail}'>
-                  </div>
-                  <div class='mdl-cell--7-col'>
-                    <p data-bind="text: $data.title()"></p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </main>
-    </div>
+		<div class='video-container'>
+			<div id='ytplayer'></div>
+		</div>
+		<input type="checkbox" data-bind="checked: booleanValue">
+		<div data-bind="foreach: videos, visible: videos().length > 0">
+			<a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index())}">
+				<img data-bind='attr:{src: thumbnail}'>
+				<p data-bind="text: $data.title()"></p>
+			</a>
+		</div>
   </body>
 
   <script>

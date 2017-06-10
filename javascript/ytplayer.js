@@ -13,23 +13,21 @@ function onYouTubeIframeAPIReady() {
     height: '390',
     width: '640',
     events: {
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
     }
   });
 };
 
 function onPlayerReady(event) {
-  player.addEventListener('onStateChange', function(e) {
-    console.log('State is:', e.data);
-  });
-  tryNext(videoList[integer].url, videoList[integer].title);
+  setTimeout(tryNext(videoList[integer].url, videoList[integer].title), 0);
   event.target.playVideo();
 };
 function onPlayerStateChange(evt) {
-  console.log(evt);
+  console.log(evt.data)
   if (evt.data == YT.PlayerState.ENDED) {
     if (booleanValue() == true) {
-      setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
+			setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
     }
   }
 };

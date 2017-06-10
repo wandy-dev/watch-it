@@ -19,7 +19,7 @@ function viewModel() {
 
   self.title   = ko.observable('');
   self.videos  = ko.observableArray([]);
-  booleanValue = ko.observable(true);
+  self.booleanValue = ko.observable(true);
 
   self.changeActiveVideo = function(url, index) {
     integer = index;
