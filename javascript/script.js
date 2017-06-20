@@ -17,15 +17,13 @@ function Item(data, index) {
 function viewModel() {
   var self = this;
 
-  self.title   = ko.observable('');
-  self.videos  = ko.observableArray([]);
+  self.videoTitle   = ko.observable();
+  self.videos       = ko.observableArray();
   self.booleanValue = ko.observable(true);
 
-  self.changeActiveVideo = function(url, index) {
+  self.changeActiveVideo = function(url, index, title) {
     integer = index;
-    newID   = getURLParameter('v', url);
-
-    renderVideo(newID);
+    tryNext(url, title);
   };
 
   $.getJSON('https://www.reddit.com/r/videos/hot.json?=jsonp', function(data){

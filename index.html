@@ -9,6 +9,7 @@
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./assets/css/material.min.css" />
+    <link rel="stylesheet" href="./assets/css/foundation.min.css" />
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="./javascript/params.js"></script>
@@ -18,19 +19,30 @@
   </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
-		<div class='video-container'>
-			<div id='ytplayer'></div>
-		</div>
-		<input type="checkbox" data-bind="checked: booleanValue">
-		<div data-bind="foreach: videos, visible: videos().length > 0">
-			<a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index())}">
-				<img data-bind='attr:{src: thumbnail}'>
-				<p data-bind="text: $data.title()"></p>
-			</a>
-		</div>
+    <div class='large-8 columns'>
+      <div class='video-container'>
+        <div id='ytplayer'></div>
+      </div>
+      <h4 data-bind='text: videoTitle'></h4>
+    </div>
+    <div class='large-4 columns list'>
+      <input type="checkbox" data-bind="checked: booleanValue">
+      <div data-bind="foreach: videos, visible: videos().length > 0">
+        <a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index(), $data.title())}">
+          <div class='row list-item'>
+            <div class='small-4 columns'>
+              <img data-bind='attr:{src: thumbnail}'>
+            </div>
+            <div class='small-8 columns'>
+              <p data-bind="text: $data.title()"></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </body>
 
   <script>
-ko.applyBindings(viewModel());
+    ko.applyBindings(viewModel());
   </script>
 </html>

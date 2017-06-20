@@ -10,21 +10,20 @@ var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('ytplayer', {
     videoId: '',
-    height: '390',
-    width: '640',
     events: {
       'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+      'onStateChange': onPlayerStateChange,
+      'onError': checkPlayback
     }
   });
 };
 
 function onPlayerReady(event) {
   setTimeout(tryNext(videoList[integer].url, videoList[integer].title), 0);
+  self.videoTitle(videoList[integer].title);
   event.target.playVideo();
 };
 function onPlayerStateChange(evt) {
-  console.log(evt.data)
   if (evt.data == YT.PlayerState.ENDED) {
     if (booleanValue() == true) {
 			setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
@@ -38,6 +37,9 @@ function renderVideo(newID) {
 function tryNext(url, title) {
   newID = getURLParameter('v', url);
   renderVideo(newID);
-  self.title = title
-  console.log(title + ' ' + url)
+  self.videoTitle(videoList[integer].title);
+};
+
+function checkPlayback() {
+  setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
 };
