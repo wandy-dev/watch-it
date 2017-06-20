@@ -1,0 +1,13 @@
+.content-grid {
+  max-width: 1350px; }
+
+.list-item {
+  text-decoration: none !important; }
+
+.list-item p {
+  color: #111111;
+  font-weight: 600;
+  line-height: 15px; }
+
+#autoplay-wrapper {
+  padding: 0 !important; }

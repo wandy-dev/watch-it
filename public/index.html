@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Wattchit</title>
+    <link>
+    <link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./assets/css/foundation.min.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="./javascript/params.js"></script>
+    <script src="./javascript/ytplayer.js"></script>
+    <script src="./javascript/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyAzmvv4B7LM0YPNbpZiTlDX4IKVoyhlnw8",
+				authDomain: "watch-it-45991.firebaseapp.com",
+				databaseURL: "https://watch-it-45991.firebaseio.com",
+				projectId: "watch-it-45991",
+				storageBucket: "",
+				messagingSenderId: "937840746994"
+			};
+			firebase.initializeApp(config);
+		</script>
+    <script src='https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js'></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+  </head>
+  <body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class='large-8 columns'>
+      <div class='video-container'>
+        <div id='ytplayer'></div>
+      </div>
+      <h4 data-bind='text: videoTitle'></h4>
+    </div>
+    <div class='large-4 columns list'>
+      <input type="checkbox" data-bind="checked: booleanValue">
+      <div data-bind="foreach: videos, visible: videos().length > 0">
+        <a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index(), $data.title())}">
+          <div class='row list-item'>
+            <div class='small-4 columns'>
+              <img data-bind='attr:{src: thumbnail}'>
+            </div>
+            <div class='small-8 columns'>
+              <p data-bind="text: $data.title()"></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    ko.applyBindings(viewModel());
+  </script>
+</html>
