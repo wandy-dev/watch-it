@@ -1,10 +1,10 @@
 body {
-  background-color: #ececec;
+  background-color: #d0e0ef;
 }
 
 .video-container {
   position: relative;
-  padding-bottom: 54.2%; /* 16:9 */
+  padding-bottom: 53.55%;
   padding-top: 25px;
   height: 0;
 }
@@ -29,14 +29,15 @@ body {
 .content h4 {
   font-weight: 500;
   font-size: 2em;
-  color: #282c37;
+  color: #3f4452;
 }
 
 #autoplay {
   height: 60px;
   text-align: center;
   vertical-align: middle;
-  line-height: 60px;  
+  line-height: 60px;
+  font-weight: 900; 
   color: #0c3a5a;
   background-color: #2b90d9;
 }

@@ -41,7 +41,7 @@
         <div id='ytplayer'></div>
       </div>
       <div class='content'>
-        <h4 data-bind='text: videoTitle'></h4>
+        <h4 data-bind='html: videoTitle'></h4>
       </div>
     </div>
     <div id='autoplay'>
@@ -56,7 +56,7 @@
               <img data-bind='attr:{src: thumbnail}'>
             </div>
             <div class='small-9 columns'>
-              <p data-bind="text: $data.title()" class='list-title'></p>
+              <p data-bind="html: $data.title()" class='list-title'></p>
             </div>
           </div>
         </a>

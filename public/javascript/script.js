@@ -35,7 +35,7 @@ function viewModel() {
 
       if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
         videoList.push({
-          title: item.data.title,
+          title: JSON.parse(item.data.title),
           url:   item.data.url,
           id:    videoIndex
         });
