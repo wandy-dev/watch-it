@@ -9,8 +9,12 @@ var videoList = [];
 function Item(data, index) {
   this.index     = ko.observable(index);
   this.title     = ko.observable(data.title);
-  this.thumbnail = ko.observable(data.thumbnail);
   this.videoID   = ko.observable(data.url);
+  if (data.thumbnail == 'nsfw') {
+    this.thumbnail = ko.observable('../assets/images/nsfw.png');
+  } else {
+    this.thumbnail = ko.observable(data.thumbnail);
+  }
   videoIndex    += 1;
 };
 
