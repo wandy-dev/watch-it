@@ -41,5 +41,8 @@ function tryNext(url, title) {
 };
 
 function checkPlayback() {
-  setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
+  var invalidStates = [-1, 1, 2, 3, 5]
+  if (invalidStates.includes(player.getPlayerState())) {
+    setTimeout(tryNext(videoList[integer += 1].url, videoList[integer].title), 0);
+  };
 };
