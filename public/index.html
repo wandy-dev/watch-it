@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./assets/css/foundation.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="./javascript/frontend.js"></script>
     <script src="./javascript/params.js"></script>
-    <script src="./javascript/ytplayer.js"></script>
     <script src="./javascript/script.js"></script>
+    <script src="./javascript/ytplayer.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
@@ -35,18 +40,23 @@
       <div class='video-container'>
         <div id='ytplayer'></div>
       </div>
-      <h4 data-bind='text: videoTitle'></h4>
+      <div class='content'>
+        <h4 data-bind='text: videoTitle'></h4>
+      </div>
+    </div>
+    <div id='autoplay'>
+      <span>Autoplay</span>&nbsp;<span data-bind='text: booleanValue() ? "On" : "Off"'></span>
+      <input type="checkbox" data-bind="checked: booleanValue" id='autoplay-input'>
     </div>
     <div class='large-4 columns list'>
-      <input type="checkbox" data-bind="checked: booleanValue">
       <div data-bind="foreach: videos, visible: videos().length > 0">
-        <a href='#' class='list-item' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index(), $data.title())}">
+        <a href='#' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index(), $data.title())}">
           <div class='row list-item'>
-            <div class='small-4 columns'>
+            <div class='small-3 columns'>
               <img data-bind='attr:{src: thumbnail}'>
             </div>
-            <div class='small-8 columns'>
-              <p data-bind="text: $data.title()"></p>
+            <div class='small-9 columns'>
+              <p data-bind="text: $data.title()" class='list-title'></p>
             </div>
           </div>
         </a>

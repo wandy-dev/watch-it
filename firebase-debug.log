@@ -1,0 +1,28 @@
+[debug] [2017-06-20T23:20:06.600Z] ----------------------------------------------------------------------
+[debug] [2017-06-20T23:20:06.602Z] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-06-20T23:20:06.602Z] CLI Version:  3.9.1
+[debug] [2017-06-20T23:20:06.602Z] Platform:     darwin
+[debug] [2017-06-20T23:20:06.602Z] Node Version: v8.1.2
+[debug] [2017-06-20T23:20:06.603Z] Time:         Tue Jun 20 2017 19:20:06 GMT-0400 (EDT)
+[debug] [2017-06-20T23:20:06.603Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-06-20T23:20:06.617Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-20T23:20:06.617Z] > authorizing via signed-in user
+[debug] [2017-06-20T23:20:06.619Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/watch-it-45991  
+ Tue Jun 20 2017 19:20:06 GMT-0400 (EDT)
+[debug] [2017-06-20T23:20:07.153Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-20T23:20:07.154Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/watch-it-45991/tokens  
+ Tue Jun 20 2017 19:20:07 GMT-0400 (EDT)
+[debug] [2017-06-20T23:20:07.507Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Andy/Documents/Webdev/static/watchttit'...
+[info] 
+[debug] [2017-06-20T23:20:07.510Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/watch-it-45991  
+ Tue Jun 20 2017 19:20:07 GMT-0400 (EDT)
+[debug] [2017-06-20T23:20:07.886Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-20T23:20:07.886Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/937840746994/clients/_:getWebAppConfig  
+ Tue Jun 20 2017 19:20:07 GMT-0400 (EDT)
+[debug] [2017-06-20T23:20:08.241Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
