@@ -84,6 +84,7 @@ body {
   text-decoration: none !important;
   padding: 10px 20px;
   background: #282c37;
+  border-bottom: 1px solid #020202;
 }
 
 .list-item .column {
