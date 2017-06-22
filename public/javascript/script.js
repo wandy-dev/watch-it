@@ -12,7 +12,7 @@ function Item(data, index) {
   this.title     = ko.observable(data.title);
   this.videoID   = ko.observable(data.url);
   if (data.thumbnail == 'nsfw') {
-    this.thumbnail = ko.observable('../assets/images/nsfw.png');
+    this.thumbnail = ko.observable('assets/images/nsfw.png');
   } else {
     this.thumbnail = ko.observable(data.thumbnail);
   }
