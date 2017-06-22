@@ -17,5 +17,41 @@ $(document).ready(function() {
     getVideos('https://www.reddit.com/r/videos/.json?jsonp&limit=' + nextpage);
     nextpage += 25;
   });
+
+  (function($) {
+    $.fn.flash_message = function(options) {
+
+      options = $.extend({
+        text: 'Done',
+        time: 1500,
+        how: 'before',
+        class_name: ''
+      }, options);
+
+      return $(this).each(function() {
+        if( $(this).parent().find('.flash_message').get(0) )
+          return;
+
+        var message = $('<span />', {
+          'class': 'flash_message ' + options.class_name,
+          text: options.text
+        }).hide().fadeIn('fast');
+
+        $(this)[options.how](message);
+
+        message.delay(options.time).fadeOut('fast', function() {
+          setTimeout($(this).remove(), 80);
+        });
+
+      });
+    };
+  })(jQuery);
+
 });
+  var flashError = function(message) {
+    $('#status-area').flash_message({
+      text: message,
+      how: 'append'
+    });
+  };
 
