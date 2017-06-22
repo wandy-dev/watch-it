@@ -50,6 +50,7 @@ function viewModel() {
       });
 
       self.videos(mappedData);
+      $('#load-more').html('Load More')
     });
   };
   getVideos()

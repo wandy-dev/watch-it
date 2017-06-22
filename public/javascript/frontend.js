@@ -9,16 +9,13 @@ $(document).ready(function() {
     };
   });
   // Store what page to load next
-  nextpage = 25;
+  nextpage = 50;
 
   $('#load-more').click(function(event) {
-    // Retains compatibility for those with no javascript
     event.preventDefault();
-
-    // Fetch the data
+    $('#load-more').html('<i class="fa fa-refresh fa-spin fa-lg fa-fw"></i>')
     getVideos('https://www.reddit.com/r/videos/.json?jsonp&limit=' + nextpage);
     nextpage += 25;
-
   });
 });
 
