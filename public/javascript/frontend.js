@@ -8,5 +8,17 @@ $(document).ready(function() {
       };
     };
   });
+  // Store what page to load next
+  nextpage = 25;
+
+  $('#load-more').click(function(event) {
+    // Retains compatibility for those with no javascript
+    event.preventDefault();
+
+    // Fetch the data
+    getVideos('https://www.reddit.com/r/videos/.json?jsonp&limit=' + nextpage);
+    nextpage += 25;
+
+  });
 });
 

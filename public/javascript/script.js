@@ -1,6 +1,7 @@
 var acceptedDomains = ['www.youtube.com', 'youtu.be'];
 var activeVideoID;
 var currentVideo; 
+var getVideos
 var integer = 0;
 var redditPosts;
 var videoIndex = 0;
@@ -30,24 +31,27 @@ function viewModel() {
     tryNext(url, title);
   };
 
-  $.getJSON('https://www.reddit.com/r/videos/hot.json?=jsonp', function(data){
-    var posts = data.data;
+  getVideos = function(url = 'https://www.reddit.com/r/videos/.json?jsonp') {
+    $.getJSON(url, function(data){
+      var posts = data.data;
 
-    var mappedData = $.map(posts.children, function(item) {
-      var media    = item.data;
-      var url      = new URL(media.url);
+      var mappedData = $.map(posts.children, function(item) {
+        var media    = item.data;
+        var url      = new URL(media.url);
 
-      if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
-        videoList.push({
-          title: item.data.title,
-          url:   item.data.url,
-          id:    videoIndex
-        });
-        return new Item(item.data, videoIndex);
-      };
+        if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
+          videoList.push({
+            title: item.data.title,
+            url:   item.data.url,
+            id:    videoIndex
+          });
+          return new Item(item.data, videoIndex);
+        };
+      });
+
+      self.videos(mappedData);
     });
-
-    self.videos(mappedData);
-  });
+  };
+  getVideos()
 };
 
