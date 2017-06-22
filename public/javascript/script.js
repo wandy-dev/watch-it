@@ -19,6 +19,29 @@ function Item(data, index) {
   videoIndex    += 1;
 };
 
+getVideos = function(url = 'https://www.reddit.com/r/videos/.json?jsonp') {
+  $.getJSON(url, function(data){
+    var posts = data.data;
+
+    var mappedData = $.map(posts.children, function(item) {
+      var media    = item.data;
+      var url      = new URL(media.url);
+
+      if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
+        videoList.push({
+          title: item.data.title,
+          url:   item.data.url,
+          id:    videoIndex
+        });
+        return new Item(item.data, videoIndex);
+      };
+    });
+
+    self.videos(mappedData);
+    $('#load-more').html('Load More')
+  });
+};
+
 function viewModel() {
   var self = this;
 
@@ -31,28 +54,6 @@ function viewModel() {
     tryNext(url, title);
   };
 
-  getVideos = function(url = 'https://www.reddit.com/r/videos/.json?jsonp') {
-    $.getJSON(url, function(data){
-      var posts = data.data;
-
-      var mappedData = $.map(posts.children, function(item) {
-        var media    = item.data;
-        var url      = new URL(media.url);
-
-        if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
-          videoList.push({
-            title: item.data.title,
-            url:   item.data.url,
-            id:    videoIndex
-          });
-          return new Item(item.data, videoIndex);
-        };
-      });
-
-      self.videos(mappedData);
-      $('#load-more').html('Load More')
-    });
-  };
   getVideos()
 };
 
