@@ -51,10 +51,10 @@
         <span>Autoplay</span>&nbsp;<span data-bind='text: booleanValue() ? "On" : "Off"'></span>
         <input type="checkbox" data-bind="checked: booleanValue" id='autoplay-input'>
       </div>
-      <div class='list'>
+      <div id='list'>
         <div data-bind="foreach: videos, visible: videos().length > 0">
           <a href='#' data-bind="click: function() {changeActiveVideo($data.videoID(), $data.index(), $data.title())}">
-            <div class='row list-item'>
+            <div data-bind='attr: {id: "video_" + $data.index()}' class='row list-item'>
               <div class='small-3 columns'>
                 <img data-bind='attr:{src: thumbnail}'>
               </div>

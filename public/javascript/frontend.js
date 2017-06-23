@@ -47,11 +47,25 @@ $(document).ready(function() {
     };
   })(jQuery);
 
+  (function($) {
+    $.fn.goTo = function() {
+      $('html, body').animate({
+        scrollTop: $(this).offset().top + 'px'
+      }, 'fast');
+      return this; // for chaining...
+    }
+  })(jQuery);
+
 });
-  var flashError = function(message) {
-    $('#status-area').flash_message({
-      text: message,
-      how: 'append'
-    });
-  };
+
+var scrollToElement = function(element) {
+  $(element).goTo()
+}
+
+var flashError = function(message) {
+  $('#status-area').flash_message({
+    text: message,
+    how: 'append'
+  });
+};
 

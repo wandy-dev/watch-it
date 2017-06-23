@@ -38,6 +38,8 @@ function tryNext(url, title) {
   newID = getURLParameter('v', url);
   renderVideo(newID);
   self.videoTitle(videoList[integer].title);
+  var elementPosition = $('#video_' + videoList[integer].id).offset().top
+  $('#list').animate({scrollTop: elementPosition - 60 + $('#list').scrollTop()}, 100);
 };
 
 function checkPlayback() {
