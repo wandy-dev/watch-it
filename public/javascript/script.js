@@ -13,7 +13,9 @@ function Item(data, index) {
   this.videoID   = ko.observable(data.url);
   if (data.thumbnail == 'nsfw') {
     this.thumbnail = ko.observable('assets/images/nsfw.png');
-  } else {
+  } else if (data.thumbnail == 'spoiler') {
+    this.thumbnail = ko.observable('assets/images/spoiler.png');
+  }
     this.thumbnail = ko.observable(data.thumbnail);
   }
   videoIndex    += 1;
