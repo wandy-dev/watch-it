@@ -38,8 +38,13 @@ function tryNext(url, title) {
   newID = getURLParameter('v', url);
   renderVideo(newID);
   self.videoTitle(videoList[integer].title);
-  var elementPosition = $('#video_' + videoList[integer].id).offset().top
-  $('#list').animate({scrollTop: elementPosition - 60 + $('#list').scrollTop()}, 100);
+  var listItemPosistion = $('#video_' + videoList[integer].id).offset().top
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     var contentMainHeight = $('#content-main').height();
+   } else {
+     var contentMainHeight = 0;
+   };
+  $('#list').animate({scrollTop: listItemPosistion - contentMainHeight - 60 + $('#list').scrollTop()}, 100);
 };
 
 function checkPlayback() {
