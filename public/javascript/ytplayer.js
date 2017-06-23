@@ -39,12 +39,12 @@ function tryNext(url, title) {
   renderVideo(newID);
   self.videoTitle(videoList[integer].title);
   var listItemPosistion = $('#video_' + videoList[integer].id).offset().top
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  if($(window).width() < 1024) {
      var contentMainHeight = $('#content-main').height();
    } else {
      var contentMainHeight = 0;
    };
-  $('#list').animate({scrollTop: listItemPosistion + contentMainHeight - 60 + $('#list').scrollTop()}, 100);
+  $('#list').animate({scrollTop: listItemPosistion - contentMainHeight - 60 + $('#list').scrollTop()}, 100);
 };
 
 function checkPlayback() {
