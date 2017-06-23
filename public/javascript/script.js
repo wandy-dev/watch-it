@@ -15,7 +15,7 @@ function Item(data, index) {
     this.thumbnail = ko.observable('../assets/images/nsfw.png');
   } else if (data.thumbnail == 'spoiler') {
     this.thumbnail = ko.observable('../assets/images/spoiler.png');
-  }
+  } else {
     this.thumbnail = ko.observable(data.thumbnail);
   }
   videoIndex    += 1;
