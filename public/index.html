@@ -37,6 +37,9 @@
   </head>
   <body>
     <!-- Always shows a header, even in smaller screens. -->
+    <div class='navbar'>
+      <img src='./assets/images/logo.png'></img>
+    </div>
     <div id="status-area"></div>
     <div id='content-main' class='large-8 columns'>
       <div class='video-container'>
@@ -44,6 +47,7 @@
       </div>
       <div class='content'>
         <h4 data-bind='html: videoTitle'></h4>
+        <p>(<a target='_blank' data-bind='attr: {href: videoUrl}'>Source</a>)</p>
       </div>
     </div>
     <div class='large-4 columns'>

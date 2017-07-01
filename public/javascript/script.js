@@ -8,9 +8,10 @@ var videoIndex = 0;
 var videoList = [];
 //console.log(player)
 function Item(data, index) {
-  this.index     = ko.observable(index);
-  this.title     = ko.observable(data.title);
-  this.videoID   = ko.observable(data.url);
+  this.index       = ko.observable(index);
+  this.title       = ko.observable(data.title);
+  this.commentsUrl = ko.observable('http://reddit.com' + data.permalink);
+  this.videoID     = ko.observable(data.url);
   if (data.thumbnail == 'nsfw') {
     this.thumbnail = ko.observable('assets/images/nsfw.png');
   } else if (data.thumbnail == 'spoiler') {
@@ -24,16 +25,16 @@ function Item(data, index) {
 getVideos = function(url = 'https://www.reddit.com/r/videos/.json?jsonp') {
   $.getJSON(url, function(data){
     var posts = data.data;
-
+    console.log(posts)
     var mappedData = $.map(posts.children, function(item) {
       var media    = item.data;
       var url      = new URL(media.url);
 
       if (media.url.length > 0 && acceptedDomains.includes(url.hostname)) {
         videoList.push({
-          title: item.data.title,
-          url:   item.data.url,
-          id:    videoIndex
+          title:       item.data.title,
+          url:         item.data.url,
+          id:          videoIndex
         });
         return new Item(item.data, videoIndex);
       };
@@ -48,6 +49,7 @@ function viewModel() {
   var self = this;
 
   self.videoTitle   = ko.observable();
+  self.videoUrl     = ko.observable();
   self.videos       = ko.observableArray();
   self.booleanValue = ko.observable(true);
 
